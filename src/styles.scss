@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~font-awesome/css/font-awesome.css';
+$fa-font-path : '../node_modules/font-awesome/fonts';
+$icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+
+
+
+body {
+  font-size: 18px;
+  line-height: 1.58;
+  background: #6699FF;
+  background: -webkit-linear-gradient(to left, #993346, #ca6363);
+  background: linear-gradient(to left, #993346, #ca6363);
+  color: #333;
+  padding-bottom: 70px;
+  padding-top: 40px;
+}
+
+.component-title {
+  color: #ca6363;
+}
+
+.sub-para {
+  font-size: small;
+}
+
+.contact-book-info {
+  margin-bottom: 6px;
+}
+
+.contact-book-list-info {
+  margin-bottom: 30px;
+}
+.nav-link {
+  font-size: 0.8em;
+}

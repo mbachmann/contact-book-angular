@@ -1,0 +1,9 @@
+<h4 class="component-title">Contact List</h4>
+<p class="sub-para contact-book-info">Example angular application with Spring Boot Backend and OpenApi generated REST API</p>
+<p class="sub-para contact-book-list-info">Phone Book Entries: {{totalItems}}</p>
+
+<section class="container legend"  >
+  <div class="row " *ngFor="let item of phoneBookList;">
+    <div [routerLink]="['/phone-book-item/',item ]" class="col-sm-8 ps-1 py-1 my-1 clickable"><span><ngx-avatar [src]="getAvatar(item.thumbNail)" name={{item.firstName}} ></ngx-avatar> &nbsp; id {{item.id}} : {{item.name}}</span></div>
+  </div>
+</section>

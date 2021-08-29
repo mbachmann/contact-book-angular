@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  contact-book-angular:
+    image: uportal/contact-book-angular:latest
+
+    restart: always
+    ports:
+      - 4000:80
+
