@@ -11,7 +11,7 @@ import { PhoneBookListComponent } from './components/phone-book-list/phone-book-
 import { PhoneBookDetailComponent } from './components/phone-book-detail/phone-book-detail.component';
 import {AvatarModule} from "ngx-avatar";
 import { ImageCropperComponent } from './components/image-cropper/image-cropper.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const avatarColors = ["#FFB6C1", "#2c3e50", "#95a5a6", "#cba973", "#1abc9c"];
 
@@ -31,7 +31,8 @@ const avatarColors = ["#FFB6C1", "#2c3e50", "#95a5a6", "#cba973", "#1abc9c"];
         AvatarModule.forRoot({
             colors: avatarColors
         }),
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
   providers: [
     { provide: BASE_PATH, useValue: environment.API_BASE_PATH }

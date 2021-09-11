@@ -1,8 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import './variables';
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
 @import '~bootstrap/scss/bootstrap';
 @import '~font-awesome/css/font-awesome.css';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 $fa-font-path : '../node_modules/font-awesome/fonts';
 $icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
@@ -16,7 +30,15 @@ body {
   background: linear-gradient(to left, #993346, #ca6363);
   color: #333;
   padding-bottom: 70px;
-  padding-top: 40px;
+  padding-top: 60px;
+}
+
+.form-control, .form-select, .form-check-input  {
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow:  none;
+    border-color: $primary;
+  }
 }
 
 .component-title {
@@ -36,4 +58,35 @@ body {
 }
 .nav-link {
   font-size: 0.8em;
+}
+.btn-label-small {
+  position: relative;
+  left: -10px;
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px 0 0 3px;
+}
+
+.btn-primary {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.btn-labeled {
+  background-color: rgb(238, 238, 238);
+  color: $secondary;
+  border-color: rgb(238, 238, 238);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (max-width: 576px) {
+  .btn-label-small {
+    left: 0;
+    background: rgba(0, 0, 0, 0);
+  }
+  body {
+    padding-bottom: 0;
+  }
 }

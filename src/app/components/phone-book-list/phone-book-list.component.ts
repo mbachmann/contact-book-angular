@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Subscription} from "rxjs";
 import {ContactsService, ContactViewList} from "../../openapi/openapi-gen";
 import {HttpResponse} from "@angular/common/http";
+import {Tooltip} from "bootstrap";
+import {activateTooltip} from "../../shared/utils";
 
 @Component({
   selector: 'app-phone-book-list',
@@ -24,6 +26,8 @@ export class PhoneBookListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    activateTooltip();
+
     this.subscription = this.contactService.findAllContactViewList("","*","*", 0, 20, [], 'response').subscribe(
       (res: HttpResponse<Array<ContactViewList>>) => {
         if (res.body != null) {
@@ -43,6 +47,14 @@ export class PhoneBookListComponent implements OnInit {
   getAvatar(data: any) {
     if (data === null) return null;
     return "data:image/png;base64," + data;
+  }
+
+  getName(firstName: any, lastName: any, company: any): string {
+      if(typeof company === 'undefined' || company === null) {
+         return firstName + ' ' + lastName;
+      } else {
+        return company + '<br/>' + firstName + ' ' + lastName;
+      }
   }
 
 

@@ -1,9 +1,193 @@
 <h4 class="component-title">Contact List</h4>
-<p class="sub-para contact-book-info">Example angular application with Spring Boot Backend and OpenApi generated REST API</p>
+<p class="sub-para contact-book-info">Example angular application with Spring Boot Backend and OpenApi generated REST
+  API</p>
 <p class="sub-para contact-book-list-info">Phone Book Entries: {{totalItems}}</p>
 
-<section class="container legend"  >
-  <div class="row " *ngFor="let item of phoneBookList;">
-    <div [routerLink]="['/phone-book-item/',item ]" class="col-sm-8 ps-1 py-1 my-1 clickable"><span><ngx-avatar [src]="getAvatar(item.thumbNail)" name={{item.firstName}} ></ngx-avatar> &nbsp; id {{item.id}} : {{item.name}}</span></div>
+<div class="container px-0">
+  <form class="row gy-1">
+    <div class="col-xs-12 col-sm-8 ">
+      <button type="button" class="btn btn-secondary btn-labeled btn-sm me-1">
+        <span class="btn-label-small"><i class="fa fa-refresh"></i></span>
+        <span class="d-none d-sm-inline-block">Refresh</span>
+      </button>
+      <button type="button" class="btn btn-secondary btn-labeled btn-sm">
+        <span class="btn-label-small"><i class="fa fa-plus"></i></span>
+        <span class="d-none d-sm-inline-block">New</span>
+      </button>
+    </div>
+
+    <div class="col-xs-12  col-sm-4">
+            <span class="input-group">
+            <input class="form-control form-control-sm" placeholder="search" type="text" id="example-search-input">
+            <span class="input-group-append">
+                <button class="btn  btn-sm  bg-white   ms-1" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </span>
+    </div>
+
+  </form>
+
+
+  <div class="row mt-3">
+    <div class="fixed-group-select-column pe-0 mt-sm-2">
+      <p class="text-secondary" style="font-size: 12px;"> Relation</p>
+      <table>
+        <colgroup>
+          <col span="1" style="width: 5px; background-color: #CCC; ">
+          <col span="1" style="width: 5px;">
+          <col span="1" style="width: 80px; ">
+        </colgroup>
+        <tbody>
+        <tr  class="clickable-side">
+          <td style="height: 35px; "></td>
+          <td></td>
+          <td style="font-size: 12px">Debitor (1)</td>
+        </tr>
+        <tr  >
+          <td style="height: 1px; background-color: #FFF;"></td>
+        </tr>
+        <tr class="clickable-side">
+          <td style="height: 35px; "></td>
+          <td></td>
+          <td style="font-size: 12px">Kreditor (1)</td>
+        </tr>
+        </tbody>
+      </table>
+      <p class="text-secondary" style="font-size: 12px;margin-top: 10px;"> Group</p>
+      <table>
+        <colgroup>
+          <col span="1" style="width: 5px; background-color: #CCC; ">
+          <col span="1" style="width: 5px;">
+          <col span="1" style="width: 80px; ">
+        </colgroup>
+        <tbody>
+        <tr class="clickable-side" >
+          <td style="height: 35px; "></td>
+          <td></td>
+          <td style="font-size: 12px;">A (1)</td>
+        </tr>
+        <tr  >
+          <td style="height: 1px; background-color: #FFF;"></td>
+        </tr>
+        <tr class="clickable-side">
+          <td style="height: 35px; "></td>
+          <td></td>
+          <td style="font-size: 12px">B (1)</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm pe-md-4 ps-sm-0 mt-4 mt-sm-2 ">
+      <section class="container ps-0  pe-0">
+        <div class="row ">
+          <div style="padding-left: 3px; padding-right: 0;" class="fixed-checkbox-column  pb-1 d-flex align-items-center">
+            <input class="form-check-input mt-0" type="checkbox" value="" >
+          </div>
+          <div class="fixed-avatar-column ">
+
+          </div>
+          <div class="col-4 col-md-3 col-lg-2 px-0 d-flex align-items-center flex-fill">
+            <p class="mb-0 text-secondary " style="font-size: 12px;"><i class="fa fa-fw fa-sort"></i>Name</p>
+          </div>
+          <div class="col-3 col-md-3  col-lg-2   px-0 d-flex align-items-center flex-fill">
+            <p class="mb-0 text-secondary " style="font-size: 12px;"><i class="fa fa-fw fa-sort-asc"></i>phone</p>
+          </div>
+          <div class="col-3 col-md-2 d-none d-lg-block px-0 d-flex align-items-center flex-fill">
+            <p class="mb-0 text-secondary " style="font-size: 12px;"><i class="fa fa-fw fa-sort-asc"></i>mail</p>
+          </div>
+
+          <div class="col-3 col-md-2 d-none  d-md-block px-0 d-flex align-items-center flex-fill">
+            <p class="mb-0 text-secondary " style="font-size: 12px;"><i class="fa fa-fw fa-sort-asc"></i>address</p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="container legend  ps-0  pe-0 ">
+
+        <div class="row  clickable  my-1 "
+             *ngFor="let item of phoneBookList;">
+
+          <div style="padding-left: 3px; padding-right: 0px;" class="fixed-checkbox-column py-1 d-flex align-items-center">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          </div>
+
+          <div [routerLink]="['/phone-book-item/',item.id ]" style="padding-left: 3px;" class="fixed-avatar-column py-1 d-flex align-items-center">
+
+            <ngx-avatar class="" size="36"
+                        [src]="getAvatar(item.thumbNail)"
+                        name={{item.firstName}}>
+            </ngx-avatar>
+
+          </div>
+          <div  class="col-4 col-md-3 col-lg-2 px-0 d-flex align-items-center flex-fill" [routerLink]="['/phone-book-item/',item.id ]">
+            <p class="mb-0 text-truncate" style="font-size: 12px;"
+               [innerHTML]="getName(item.firstName, item.lastName, item.company)"></p>
+          </div>
+          <div  class="col-3 col-md-3 col-lg-2 d-flex align-items-center flex-fill" [routerLink]="['/phone-book-item/',item.id ]">
+            <p class="mb-0 text-truncate" style="font-size: 12px;">+41 (0) 79 123 45 67 </p>
+          </div>
+          <div class="col-3 col-md-2 d-none d-lg-flex px-0 d-flex align-items-center flex-fill" [routerLink]="['/phone-book-item/',item.id ]">
+            <p class="mb-0 text-truncate" style="font-size: 12px;">Mail Mail Mail Mail Mail</p>
+          </div>
+
+          <div class="col-3 col-md-2 d-none  d-md-flex px-0 d-flex align-items-center flex-fill" [routerLink]="['/phone-book-item/',item.id ]">
+            <p class="mb-0 text-truncate" style="font-size: 12px;">Address Address Address Address Address</p>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
-</section>
+  <form class="row gy-1 mt-4">
+    <div class=" pe-0 mt-sm-2"></div>
+    <div class="col-3 px-0">
+      <select class="form-select form-select-sm" aria-label="select pagination size" style="font-size: 12px;">
+        <option selected>50 per page</option>
+        <option value="1">20 per page</option>
+        <option value="2">50 per page</option>
+        <option value="3">100 per page</option>
+      </select>
+    </div>
+
+    <div class="col-9 d-flex justify-content-center ">
+      <nav class="" aria-label="...">
+        <ul class="pagination pagination-sm ">
+          <li data-bs-toggle="tooltip" data-bs-placement="top" title="navigate to first page">
+            <span class="page-item disabled">
+               <a class="page-link " href="#" aria-label="First"  >
+                 <span aria-hidden="true">&laquo;</span>
+               </a>
+              </span>
+          </li>
+
+          <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&lsaquo;</span>
+            </a>
+          </li>
+          <li class="page-item"  >
+            <a class="page-link" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="navigate to page 1" >1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="navigate to page 2" >2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next"  data-bs-toggle="tooltip" data-bs-placement="top" title="navigate to next page">
+              <span aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Last"  data-bs-toggle="tooltip" data-bs-placement="top" title="navigate to last page" >
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </form>
+</div>
+
+

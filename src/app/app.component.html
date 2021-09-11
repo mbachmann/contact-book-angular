@@ -12,22 +12,35 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/home']">Start Page</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/mbachmann/contact-book" target="_blank">Github
-            Backend</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarConfigurationDropdown" role="button" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+            Configuration
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarConfigurationDropdown">
+            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book" target="_blank">Codes</a>
+            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book-angular" target="_blank">Contact Groups</a>
+            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book-angular" target="_blank">Contact Relations</a>
+            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book-angular" target="_blank">Create Random Contacts</a>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/mbachmann/contact-book-angular" target="_blank">Github Frontend</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarGitHubDropdown" role="button" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+            Github
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarGitHubDropdown">
+            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book" target="_blank">Backend</a>
+            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book-angular" target="_blank">Frontend</a>
+          </div>
         </li>
       </ul>
     </div>
   </nav>
 
-  <main class="px-3 mt-4 main">
+  <main class="px-3  main ">
     <router-outlet></router-outlet>
   </main>
 
-  <footer class="fixed-bottom px-3 mt-4 bg-light">
+  <footer class="fixed-bottom px-3 mt-4 bg-light d-none d-sm-block">
     <section class="container d-flex justify-content-center justify-content-lg-between p-4 border-bottom" >
 
       <!-- Left -->

@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-
+import {Tooltip} from "bootstrap";
+import {activateTooltip} from "./shared/utils";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'contact-book-angular';
 
   ngOnInit(): void {
+    activateTooltip();
   }
 
   ngOnDestroy(){

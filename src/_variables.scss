@@ -1,2 +1,20 @@
-$primary: #844747;
+@import '~bootstrap/scss/bootstrap';
+
+$primary: rgb(158, 63, 79);
+
 $color-contrast-light: white;
+$link-hover-color: $secondary;
+
+$tooltip-bg: $secondary;
+$tooltip-arrow-color: $tooltip-bg;
+
+$pagination-active-bg: $primary;
+$pagination-color: $primary;
+$pagination-active-border-color: $primary;
+$pagination-hover-color: $link-hover-color;
+
+$component-active-color: $primary;
+$form-check-input-checked-bg-color: $primary;
+$form-check-input-checked-border-color:   $form-check-input-checked-bg-color;
+
+
