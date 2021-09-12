@@ -1,20 +1,29 @@
-@import '~bootstrap/scss/bootstrap';
 
 $primary: rgb(158, 63, 79);
+$font-size-base: 0.8rem;
 
 $color-contrast-light: white;
-$link-hover-color: $secondary;
 
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$link-hover-color: $secondary;
 $tooltip-bg: $secondary;
 $tooltip-arrow-color: $tooltip-bg;
 
-$pagination-active-bg: $primary;
-$pagination-color: $primary;
-$pagination-active-border-color: $primary;
-$pagination-hover-color: $link-hover-color;
+$primary-lighter: #ca6363;
 
-$component-active-color: $primary;
-$form-check-input-checked-bg-color: $primary;
-$form-check-input-checked-border-color:   $form-check-input-checked-bg-color;
+$customs-theme-colors: (
+  "primary-lighter": $primary-lighter,
+  "altlight": #f2ebfa,
+  "altdark": #522192
+);
 
+$theme-colors: map-merge($customs-theme-colors, $theme-colors);
 
+@import '~bootstrap/scss/bootstrap';
+@import '~font-awesome/css/font-awesome.css';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+$fa-font-path : '../node_modules/font-awesome/fonts';
+$icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';

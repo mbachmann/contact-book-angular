@@ -2,32 +2,13 @@
 
 @import './variables';
 
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-$theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
-);
-@import '~bootstrap/scss/bootstrap';
-@import '~font-awesome/css/font-awesome.css';
-@import '~bootstrap-icons/font/bootstrap-icons.css';
-$fa-font-path : '../node_modules/font-awesome/fonts';
-$icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
-
-
 
 body {
   font-size: 18px;
   line-height: 1.58;
-  background: #6699FF;
-  background: -webkit-linear-gradient(to left, #993346, #ca6363);
-  background: linear-gradient(to left, #993346, #ca6363);
+  background: $primary-lighter;
+  background: -webkit-linear-gradient(to left, $primary, $primary-lighter);
+  background: linear-gradient(to left, $primary, #ca6363);
   color: #333;
   padding-bottom: 70px;
   padding-top: 60px;
@@ -42,7 +23,7 @@ body {
 }
 
 .component-title {
-  color: #ca6363;
+  color: $primary-lighter;
 }
 
 .sub-para {
@@ -74,9 +55,9 @@ body {
 }
 
 .btn-labeled {
-  background-color: rgb(238, 238, 238);
+  background-color: darken($light, 5%);
   color: $secondary;
-  border-color: rgb(238, 238, 238);
+  border-color: darken($light, 5%);
   padding-top: 0;
   padding-bottom: 0;
 }
