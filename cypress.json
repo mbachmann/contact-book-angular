@@ -1,0 +1,16 @@
+{
+  "$schema": "https://on.cypress.io/cypress.schema.json",
+  "chromeWebSecurity": false,
+  "integrationFolder": "cypress/integration",
+  "supportFile": "cypress/support/index.ts",
+  "videosFolder": "cypress/videos",
+  "screenshotsFolder": "cypress/screenshots",
+  "pluginsFile": "cypress/plugins/index.js",
+  "fixturesFolder": "cypress/fixtures",
+  "baseUrl": "http://localhost:4200",
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "results/cypress-report.xml",
+    "toConsole": true
+  }
+}
