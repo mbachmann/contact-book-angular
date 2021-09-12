@@ -1,17 +1,21 @@
-<input type="file" (change)="fileChangeEvent($event)" />
+
+
+<input class="form-control form-control-sm" type="file" (change)="fileChangeEvent($event)" />
 <br />
 <br />
-<button (click)="rotateLeft()">Rotate left</button>
-<button (click)="rotateRight()">Rotate right</button>
-<button (click)="flipHorizontal()">Flip horizontal</button>
-<button (click)="flipVertical()">Flip vertical</button>
+<button type="button" class="btn btn-primary btn-sm mx-1" (click)="rotateLeft()">Rotate left</button>
+<button type="button" class="btn btn-primary btn-sm mx-1" (click)="rotateRight()">Rotate right</button>
+<button type="button" class="btn btn-primary btn-sm mx-1" (click)="flipHorizontal()">Flip horizontal</button>
+<button type="button" class="btn btn-primary btn-sm mx-1" (click)="flipVertical()">Flip vertical</button>
 <br />
 <br />
-<button (click)="toggleContainWithinAspectRatio()">{{containWithinAspectRatio?'Fill Aspect Ratio':'Contain Within Aspect Ratio'}}</button>
-<button (click)="resetImage()">Reset image</button>
+<button type="button" class="btn btn-primary btn-sm mx-1" (click)="toggleContainWithinAspectRatio()">{{containWithinAspectRatio?'Fill Aspect Ratio':'Contain Within Aspect Ratio'}}</button>
+<button type="button" class="btn btn-primary btn-sm mx-1" (click)="resetImage()">Reset image</button>
 <br />
 <br />
-<input [(ngModel)]="rotation" placeholder="Rotation" type="number" (keyup)="updateRotation()" /> <button (click)="zoomOut()">Zoom -</button> <button (click)="zoomIn()">Zoom +</button>
+<input class="form-control form-control-sm" [(ngModel)]="rotation" placeholder="Rotation" type="number" (keyup)="updateRotation()" style="width: 100px;" />
+<button type="button" class="btn btn-primary btn-sm mx-1"  (click)="zoomOut()">Zoom -</button>
+<button type="button" class="btn btn-primary btn-sm mx-1"  (click)="zoomIn()">Zoom +</button>
 
 <div>
   <image-cropper
@@ -34,5 +38,5 @@
     (loadImageFailed)="loadImageFailed()"
   ></image-cropper>
 </div>
-<img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" />
+<img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'"  alt=""/>
 
