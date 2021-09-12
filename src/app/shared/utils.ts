@@ -1,19 +1,17 @@
-import {Tooltip} from "bootstrap";
+import { Tooltip } from 'bootstrap';
 
-var isoDateFormat = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/;
+var isoDateFormat =
+  /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/;
 
 export function parseIsoDateStrToDate(value: any) {
-  if (typeof value === "string" && isoDateFormat.test(value)){
+  if (typeof value === 'string' && isoDateFormat.test(value)) {
     return new Date(value);
   }
-  return value
+  return value;
 }
 
-export function activateTooltip () {
-  Array.from(document.querySelectorAll('button[data-bs-toggle="tooltip"]'))
-    .forEach(tooltipNode => new Tooltip(tooltipNode))
-  Array.from(document.querySelectorAll('a[data-bs-toggle="tooltip"]'))
-    .forEach(tooltipNode => new Tooltip(tooltipNode))
-  Array.from(document.querySelectorAll('li[data-bs-toggle="tooltip"]'))
-    .forEach(tooltipNode => new Tooltip(tooltipNode))
+export function activateTooltip() {
+  //Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  // .forEach(tooltipNode =>   new Tooltip(tooltipNode))
+  $('[data-bs-toggle="tooltip"]').tooltip();
 }
