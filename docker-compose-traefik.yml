@@ -1,24 +1,21 @@
 version: '2'
 
-
 networks:
   proxy:
     external: true
 
 services:
-
   contact-book-angular:
     image: uportal/contact-book-angular:latest
     labels:
-      - "traefik.backend=contact-book-angular"
-      - "traefik.frontend.rule=Host:contact-book-angular.united-portal.com"
-      - "traefik.docker.network=proxy"
-      - "traefik.port=80"
-      - "traefik.enable=true"
+      - 'traefik.backend=contact-book-angular'
+      - 'traefik.frontend.rule=Host:contact-book-angular.united-portal.com'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.port=80'
+      - 'traefik.enable=true'
 
     restart: always
     ports:
       - 4000:80
     networks:
       - proxy
-
