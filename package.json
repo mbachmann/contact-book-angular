@@ -1,23 +1,31 @@
 {
   "name": "contact-book-angular",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "config": {
-    "app": "conatct-book-angular",
-    "repo": "hub.docker.com"
+    "app": "contact-book-angular",
+    "repo": "uportal"
   },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-prod": "node --max_old_space_size=64000 node_modules/@angular/cli/bin/ng serve --prod",
+    "start-prod": "node --max_old_space_size=32000 node_modules/@angular/cli/bin/ng serve --configuration production",
     "build": "ng build",
-    "build-prod": "node --max_old_space_size=64000 node_modules/@angular/cli/bin/ng build --prod",
+    "build-prod": "node --max_old_space_size=64000 node_modules/@angular/cli/bin/ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "cy:run": "./node_modules/.bin/cypress run",
+    "cy:ci": "concurrently \"cypress run\" --kill-others \"ng serve\" --success first",
+    "format:check": "prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.js,.json,.css,.scss}\"",
+    "prettier:format": "prettier --write \"{,src/{app,environments}/**/}*.{md,json,ts,css,scss,yml}\"",
+    "test": "ng test --browsers Chrome",
+    "test-headless": "ng test --watch=false --browsers ChromeHeadlessNoSandbox",
     "generate:api": "openapi-generator-cli generate --type-mappings=DateTime=Date -g typescript-angular -i  src/app/openapi/api-docs.yaml -o src/app/openapi/openapi-gen",
     "docker-build": "DOCKER_BUILDKIT=0 docker build -t uportal/contact-book-angular .",
     "docker-run": "cross-conf-env docker run --rm --name contact-book-angular -p 4000:80 uportal/contact-book-angular",
-    "docker-push": "cross-conf-env docker push uportal/contact-book-angular",
-    "docker-login": "cat ~/.docker_password.txt | docker login --username uportal --password-stdin"
+    "docker-push-latest": "cross-conf-env docker push npm_package_config_repo/npm_package_config_app:latest",
+    "docker-login": "cat ~/.docker_password.txt | docker login --username uportal --password-stdin",
+    "docker-logout": "cross-conf-env docker logout",
+    "docker-push-prod": "cross-conf-env docker push npm_package_config_repo/npm_package_config_app:npm_package_version",
+    "var": "cross-conf-env echo  npm_package_config_repo/npm_package_config_app:npm_package_version"
   },
   "private": true,
   "dependencies": {
@@ -33,8 +41,10 @@
     "bootstrap": "^5.0.2",
     "bootstrap-icons": "^1.5.0",
     "font-awesome": "^4.7.0",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.6.0",
     "ngx-avatar": "^4.1.0",
-    "ngx-image-cropper": "^4.0.0",
+    "ngx-image-cropper": "^4.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
@@ -43,17 +53,23 @@
     "@angular-devkit/build-angular": "~12.0.5",
     "@angular/cli": "~12.0.5",
     "@angular/compiler-cli": "~12.0.5",
+    "@briebug/cypress-schematic": "^5.0.1",
     "@openapitools/openapi-generator-cli": "^2.3.5",
     "@types/bootstrap": "^5.1.4",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
+    "concurrently": "^6.2.1",
     "cross-conf-env": "^1.1.2",
+    "cypress": "^8.3.1",
+    "cypress-file-upload": "^5.0.8",
     "jasmine-core": "~3.7.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.4.0",
     "typescript": "~4.2.3"
   }
 }

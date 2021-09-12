@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_BASE_PATH: 'https://contact-book-h2.united-portal.com'
+  API_BASE_PATH: 'https://contact-book-h2.united-portal.com',
   // API_BASE_PATH: 'http://localhost:8080'
 };
 

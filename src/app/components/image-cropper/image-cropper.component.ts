@@ -1,11 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import {base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform} from "ngx-image-cropper";
-
+import { base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-image-cropper',
   templateUrl: './image-cropper.component.html',
-  styleUrls: ['./image-cropper.component.scss']
+  styleUrls: ['./image-cropper.component.scss'],
 })
 export class ImageCropperComponent {
   imageChangedEvent: any = '';
@@ -57,22 +56,21 @@ export class ImageCropperComponent {
     this.transform = {
       ...this.transform,
       flipH: flippedV,
-      flipV: flippedH
+      flipV: flippedH,
     };
   }
-
 
   flipHorizontal() {
     this.transform = {
       ...this.transform,
-      flipH: !this.transform.flipH
+      flipH: !this.transform.flipH,
     };
   }
 
   flipVertical() {
     this.transform = {
       ...this.transform,
-      flipV: !this.transform.flipV
+      flipV: !this.transform.flipV,
     };
   }
 
@@ -84,18 +82,18 @@ export class ImageCropperComponent {
   }
 
   zoomOut() {
-    this.scale -= .1;
+    this.scale -= 0.1;
     this.transform = {
       ...this.transform,
-      scale: this.scale
+      scale: this.scale,
     };
   }
 
   zoomIn() {
-    this.scale += .1;
+    this.scale += 0.1;
     this.transform = {
       ...this.transform,
-      scale: this.scale
+      scale: this.scale,
     };
   }
 
@@ -106,7 +104,7 @@ export class ImageCropperComponent {
   updateRotation() {
     this.transform = {
       ...this.transform,
-      rotate: this.rotation
+      rotate: this.rotation,
     };
   }
 }

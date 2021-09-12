@@ -1,10 +1,8 @@
-
 .app {
-  background-color:#FFF;
+  background-color: #fff;
   //min-height: 100vh;
-  min-height:  calc(100vh - 130px);
+  min-height: calc(100vh - 130px);
 }
-
 
 @media (max-width: 767px) {
   .navbar-collapse {
@@ -13,14 +11,14 @@
 }
 
 .nav-link:hover {
-  background-color:#DDD;
+  background-color: #ddd;
 }
 
 .navbar {
   -webkit-box-shadow: 0 8px 6px -6px #999;
   -moz-box-shadow: 0 8px 6px -6px #999;
   box-shadow: 0 8px 6px -6px #999;
-  background-color:#f8f8f8;
+  background-color: #f8f8f8;
 }
 
 .navbar-brand {
@@ -35,12 +33,9 @@ main {
 
 @media (max-width: 576px) {
   .app {
-    min-height:  calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
   }
   main {
     padding-bottom: 0;
   }
-
-
 }
-
