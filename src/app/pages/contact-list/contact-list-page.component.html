@@ -108,13 +108,13 @@
       <section class="container legend  ps-0  pe-0 ">
 
         <div class="row  clickable  my-1 "
-             *ngFor="let item of phoneBookList;">
+             *ngFor="let item of contactBookList;">
 
           <div style="padding-left: 3px; padding-right: 0px;" class="fixed-checkbox-column py-1 d-flex align-items-center">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
           </div>
 
-          <div [routerLink]="['/phone-book-item/',item.id ]" style="padding-left: 3px;" class="fixed-avatar-column py-1 d-flex align-items-center">
+          <div [routerLink]="['/contact-book-item/',item.id ]" style="padding-left: 3px;" class="fixed-avatar-column py-1 d-flex align-items-center">
 
             <ngx-avatar class="" size="36"
                         [src]="getAvatar(item.thumbNail)"
@@ -122,18 +122,18 @@
             </ngx-avatar>
 
           </div>
-          <div  class="col-4 col-md-3 col-lg-2 px-0 d-flex align-items-center flex-fill" [routerLink]="['/phone-book-item/',item.id ]">
+          <div  class="col-4 col-md-3 col-lg-2 px-0 d-flex align-items-center flex-fill" [routerLink]="['/contact-book-item/',item.id ]">
             <p class="mb-0 text-truncate" style="font-size: 12px;"
                [innerHTML]="getName(item.firstName, item.lastName, item.company)"></p>
           </div>
-          <div  class="col-3 col-md-3 col-lg-2 d-flex align-items-center flex-fill" [routerLink]="['/phone-book-item/',item.id ]">
+          <div  class="col-3 col-md-3 col-lg-2 d-flex align-items-center flex-fill" [routerLink]="['/contact-book-item/',item.id ]">
             <p class="mb-0 text-truncate" style="font-size: 12px;">+41 (0) 79 123 45 67 </p>
           </div>
-          <div class="col-3 col-md-2 d-none d-lg-flex px-0 d-flex align-items-center flex-fill" [routerLink]="['/phone-book-item/',item.id ]">
+          <div class="col-3 col-md-2 d-none d-lg-flex px-0 d-flex align-items-center flex-fill" [routerLink]="['/contact-book-item/',item.id ]">
             <p class="mb-0 text-truncate" style="font-size: 12px;">Mail Mail Mail Mail Mail</p>
           </div>
 
-          <div class="col-3 col-md-2 d-none  d-md-flex px-0 d-flex align-items-center flex-fill" [routerLink]="['/phone-book-item/',item.id ]">
+          <div class="col-3 col-md-2 d-none  d-md-flex px-0 d-flex align-items-center flex-fill" [routerLink]="['/contact-book-item/',item.id ]">
             <p class="mb-0 text-truncate" style="font-size: 12px;">Address Address Address Address Address</p>
           </div>
         </div>

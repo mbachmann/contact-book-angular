@@ -5,13 +5,13 @@ import { HttpResponse } from '@angular/common/http';
 import { activateTooltip } from '../../shared/utils';
 
 @Component({
-  selector: 'app-phone-book-list',
+  selector: 'app-contact-book-list',
   templateUrl: './contact-list-page.component.html',
   styleUrls: ['./contact-list-page.component.scss'],
 })
 export class ContactListPageComponent implements OnInit {
   private subscription: Subscription | undefined;
-  phoneBookList: Array<ContactViewList> = [];
+  contactBookList: Array<ContactViewList> = [];
   totalItems: string = '0';
 
   constructor(private readonly contactService: ContactsService) {}
@@ -28,7 +28,7 @@ export class ContactListPageComponent implements OnInit {
     this.subscription = this.contactService.findAllContactViewList('', '*', '*', 0, 20, [], 'response').subscribe(
       (res: HttpResponse<Array<ContactViewList>>) => {
         if (res.body != null) {
-          this.phoneBookList = res.body;
+          this.contactBookList = res.body;
           const keys = res.headers.keys();
           const headers = keys.map(key => `${key}: ${res.headers.get(key)}`);
           console.log(headers);

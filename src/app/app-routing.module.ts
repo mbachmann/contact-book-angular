@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactListPageComponent } from './components/contact-list/contact-list-page.component';
-import { ContactDetailPageComponent } from './components/contact-detail/contact-detail-page.component';
+import { ContactListPageComponent } from './pages/contact-list/contact-list-page.component';
+import { ContactDetailPageComponent } from './pages/contact-detail/contact-detail-page.component';
 
 const routes: Routes = [
   {
@@ -9,11 +9,11 @@ const routes: Routes = [
     component: ContactListPageComponent,
   },
   {
-    path: 'phone-book-item',
+    path: 'contact-book-item',
     component: ContactDetailPageComponent,
   },
   {
-    path: 'phone-book-item/:id',
+    path: 'contact-book-item/:id',
     component: ContactDetailPageComponent,
   },
   {
