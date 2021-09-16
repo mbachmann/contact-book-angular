@@ -653,15 +653,11 @@ components:
           type: integer
           format: int64
         photo:
-          type: array
-          items:
-            type: string
-            format: byte
+          type: string
+          description: The photo of the contact
         thumbNail:
-          type: array
-          items:
-            type: string
-            format: byte
+          type: string
+          description: The thumbnail of the contact
         photoContentType:
           type: string
         firstName:

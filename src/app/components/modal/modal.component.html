@@ -1,0 +1,18 @@
+
+<div class="bootstrap-modal modal fade"  tabindex="-1" aria-labelledby="bootstrap-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bootstrap-modal">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="cancelText" type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{cancelText}}</button>
+        <button *ngIf="okText" type="button" class="btn btn-primary" (click)="onOkClick()">{{okText}}</button>
+      </div>
+    </div>
+  </div>
+</div>

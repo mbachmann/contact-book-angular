@@ -14,6 +14,7 @@ export class ContactListPageComponent implements OnInit {
   contactBookList: Array<ContactViewList> = [];
   totalItems: string = '0';
 
+
   constructor(private readonly contactService: ContactsService) {}
 
   ngOnDestroy(): void {

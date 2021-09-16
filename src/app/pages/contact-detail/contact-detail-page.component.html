@@ -1,24 +1,36 @@
 <h4 class="component-title">Phone Book Entry</h4>
 
-<p class="sub-para contact-book-info">Phone Book Entry id : {{getId()}}</p>
-
-<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch demo modal </button>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p class="sub-para">The modal body is where all the text, images, and links go.</p>
-        <app-image-cropper></app-image-cropper>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <p class="sub-para contact-book-info">Phone Book Entry id : {{getId()}}</p>
     </div>
+    <div class="col-xs-12 col-sm-6">
+
+      <img *ngIf="contact.photo" class="img-thumbnail" [src]="getAvatar(contact.photo, contact.photoContentType)"  alt="avatar"/>
+
+      <p *ngIf="contact.photo" class="sub-para ">({{avatarWidth}}x{{avatarHeight}} pixels)</p>
+
+      <button type="button" class="btn btn-primary btn-sm mx-1" (click)="openModalImageCropper('image-cropper-modal')">{{getAvatarButtonText()}}</button>
+    </div>
+
   </div>
+
 </div>
+
+
+<bootstrap-modal id="custom-modal-1" modalTitle="A Custom Modal!" cancelText="Cancel"  okText="Ok" >
+  <h3>A Custom Modal!</h3>
+  <p class="sub-para">Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+  <button class="btn btn-primary btn-sm" (click)="closeModal('custom-modal-1');">Close</button>
+</bootstrap-modal>
+
+<bootstrap-modal id="custom-modal-2" modalTitle="A Tall Custom Modal" cancelText="Cancel"  okText="Ok" >
+  <h3 style="height:800px">A Tall Custom Modal!</h3>
+  <button (click)="closeModal('custom-modal-2');">Close</button>
+</bootstrap-modal>
+
+<bootstrap-modal id="image-cropper-modal" modalTitle="Contact Photo" cancelText="Cancel" okText="Ok"  (onOk)="saveImage($event)">
+  <app-image-cropper  #modalChild ></app-image-cropper>
+</bootstrap-modal>
+

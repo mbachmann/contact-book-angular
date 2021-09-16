@@ -1,13 +1,23 @@
-import { Component, ViewChild } from '@angular/core';
-import { base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
+import {
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import {base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform} from 'ngx-image-cropper';
+import {activateTooltip, isValidImageType} from "../../shared/utils";
+import {ToastrService} from "ngx-toastr";
+import {ModalChild} from "../modal/modal-child";
 
 @Component({
   selector: 'app-image-cropper',
   templateUrl: './image-cropper.component.html',
   styleUrls: ['./image-cropper.component.scss'],
 })
-export class ImageCropperComponent {
+export class ImageCropperComponent implements OnInit, ModalChild {
+
+  imageFile: any = undefined;
   imageChangedEvent: any = '';
+  imageBase64: any = '';
   croppedImage: any = '';
   canvasRotation = 0;
   rotation = 0;
@@ -16,6 +26,28 @@ export class ImageCropperComponent {
   containWithinAspectRatio = false;
   transform: ImageTransform = {};
 
+  imageCropperHidden = false;
+
+  constructor(private toastr: ToastrService) {
+
+  }
+
+  ngOnInit(): void {
+    activateTooltip();
+  }
+
+  public setData(imageBase64: string): void {
+    this.imageCropperHidden = true;
+    this.imageBase64 = imageBase64;
+    setTimeout(() => activateTooltip(), 500);
+  }
+
+  public getData() {
+    return this.croppedImage;
+  }
+
+
+
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
   }
@@ -23,7 +55,7 @@ export class ImageCropperComponent {
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
     if (event.base64 != null) {
-      console.log(event, base64ToFile(event.base64));
+      // console.log(event, base64ToFile(event.base64));
     }
   }
 
@@ -107,4 +139,22 @@ export class ImageCropperComponent {
       rotate: this.rotation,
     };
   }
+
+  fileSelected($event: FileList) {
+    let file: File | null = $event.item(0);
+    if (file !== null && isValidImageType(file.type)) {
+      this.imageFile = file;
+      this.imageCropperHidden = true;
+      setTimeout(() => activateTooltip(), 500);
+    } else {
+      console.log('need to be image');
+      this.toastr.error('Please use a jpg or png image!', 'error loading image');
+    }
+  }
+
+
+  toogleImageCropper() {
+    this.imageCropperHidden = !this.imageCropperHidden;
+  }
+
 }
