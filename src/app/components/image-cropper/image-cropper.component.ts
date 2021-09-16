@@ -3,7 +3,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import {base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform} from 'ngx-image-cropper';
+import {Dimensions, ImageCroppedEvent, ImageTransform} from 'ngx-image-cropper';
 import {activateTooltip, isValidImageType} from "../../shared/utils";
 import {ToastrService} from "ngx-toastr";
 import {ModalChild} from "../modal/modal-child";

@@ -5,6 +5,7 @@ import {ImageCropperModule} from "ngx-image-cropper";
 import {BrowserModule, HammerModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {ToastrModule} from "ngx-toastr";
+import {DropZoneComponent} from "../drop-zone/drop-zone.component";
 
 
 describe('ImageCropperComponent', () => {
@@ -24,7 +25,7 @@ describe('ImageCropperComponent', () => {
           preventDuplicates: true,
         }),
       ],
-      declarations: [ImageCropperComponent],
+      declarations: [ImageCropperComponent, DropZoneComponent],
     }).compileComponents();
 
   });

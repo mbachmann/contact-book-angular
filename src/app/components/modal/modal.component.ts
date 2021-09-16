@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 
 import { ModalService } from './modal.service';
-import {Modal} from "bootstrap";
 import {ModalChild} from "./modal-child";
 import {animate, style, transition, trigger} from "@angular/animations";
 
@@ -39,7 +38,6 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   @Output() onOk = new EventEmitter<string>();
   private element: HTMLElement;
-  private bootstrapModal: Modal | undefined;
   displayStyle = "none";
 
   @ContentChild('modalChild') child: (Component & ModalChild) | undefined ;

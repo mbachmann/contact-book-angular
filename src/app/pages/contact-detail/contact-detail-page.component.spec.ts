@@ -10,6 +10,9 @@ import {FormsModule} from "@angular/forms";
 import {ToastrModule} from "ngx-toastr";
 import {ActivatedRoute} from "@angular/router";
 import {of} from "rxjs";
+import {DropZoneComponent} from "../../components/drop-zone/drop-zone.component";
+import {ModalComponent} from "../../components/modal/modal.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('ContactDetailPageComponent', () => {
   let component: ContactDetailPageComponent;
@@ -19,6 +22,7 @@ describe('ContactDetailPageComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        BrowserAnimationsModule,
         HttpClientModule,
         HammerModule,
         BrowserModule,
@@ -30,7 +34,7 @@ describe('ContactDetailPageComponent', () => {
           preventDuplicates: true,
         }),
       ],
-      declarations: [ContactDetailPageComponent, ImageCropperComponent],
+      declarations: [ContactDetailPageComponent, ImageCropperComponent, DropZoneComponent, ModalComponent],
       providers: [
         {
           provide: ActivatedRoute,
