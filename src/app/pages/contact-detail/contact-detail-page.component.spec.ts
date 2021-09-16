@@ -7,6 +7,9 @@ import {ImageCropperComponent} from "../../components/image-cropper/image-croppe
 import {BrowserModule, HammerModule} from "@angular/platform-browser";
 import {ImageCropperModule} from "ngx-image-cropper";
 import {FormsModule} from "@angular/forms";
+import {ToastrModule} from "ngx-toastr";
+import {ActivatedRoute} from "@angular/router";
+import {of} from "rxjs";
 
 describe('ContactDetailPageComponent', () => {
   let component: ContactDetailPageComponent;
@@ -21,8 +24,23 @@ describe('ContactDetailPageComponent', () => {
         BrowserModule,
         ImageCropperModule,
         FormsModule,
+        ToastrModule.forRoot({
+          timeOut: 3000,
+          positionClass: 'toast-top-right',
+          preventDuplicates: true,
+        }),
       ],
       declarations: [ContactDetailPageComponent, ImageCropperComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({
+              id: 1,
+            }),
+          },
+        },
+      ],
     }).compileComponents();
   });
 
