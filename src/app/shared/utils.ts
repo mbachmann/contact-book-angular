@@ -11,7 +11,7 @@ export function parseIsoDateStrToDate(value: any) {
 }
 
 export function activateTooltip() {
-  // $('[data-bs-toggle="tooltip"]').tooltip();
+  $('[data-bs-toggle="tooltip"]').tooltip();
 
 }
 
