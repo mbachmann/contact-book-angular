@@ -34,7 +34,7 @@ describe('HighlightDirective', () => {
   });
 
   // attached TooltipDirective should be listed in the button
-  it('should have `HighlightDirective` in 1st <button> providerTokens', () => {
+  it('should have `TooltipDirective` in 1st <button> providerTokens', () => {
     expect(des[0].providerTokens).toContain(TooltipDirective);
   });
 
