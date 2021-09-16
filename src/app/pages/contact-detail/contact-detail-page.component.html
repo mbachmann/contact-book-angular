@@ -11,7 +11,7 @@
 
       <p *ngIf="contact.photo" class="sub-para ">({{avatarWidth}}x{{avatarHeight}} pixels)</p>
 
-      <button type="button" class="btn btn-primary btn-sm mx-1" (click)="openModalImageCropper('image-cropper-modal')">{{getAvatarButtonText()}}</button>
+      <button type="button" class="btn btn-primary btn-sm mx-1" (click)="openModalImageCropper('image-cropper-modal')" tooltip="tootip on top" >{{getAvatarButtonText()}}</button>
     </div>
 
   </div>

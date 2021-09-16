@@ -3,22 +3,28 @@
 
 <div class="container px-0"  *ngIf="imageCropperHidden">
   <div class="row">
-  <div><button type="button" class="btn btn-sm btn-primary me-1 mb-2" (click)="toogleImageCropper()" >Load another photo </button></div>
+    <div class="col-xs-12 col-sm-8 ">
+    <button type="button" class="btn btn-secondary btn-labeled btn-sm mb-2" (click)="toogleImageCropper()" tooltip="Load another photo">
+      <span class="btn-label-small"><i class="fa fa-plus"></i></span>
+      <span class="d-none d-sm-inline-block">New</span>
+    </button>
+    </div>
   </div>
   <div class="row">
     <div class="col-sm-12  col-md-7" >
-      <button type="button" class="btn btn-light me-1" (click)="zoomOut()" data-bs-toggle="tooltip" data-bs-placement="top" title="Zoom -"> <i class="fa fa-search-minus"></i> </button>
-      <button type="button" class="btn btn-light me-1" (click)="zoomIn()" data-bs-toggle="tooltip" data-bs-placement="top" title="Zoom +"> <i class="fa fa-search-plus"></i> </button>
+      <button type="button" class="btn btn-light me-1" (click)="zoomOut()" tooltip="Zoom -"> <i class="fa fa-search-minus"></i> </button>
+      <button type="button" class="btn btn-light me-1" (click)="zoomIn()"  tooltip="Zoom +"> <i class="fa fa-search-plus"></i> </button>
 
-      <button type="button" class="btn btn-light me-1" (click)="rotateLeft()" data-bs-toggle="tooltip" data-bs-placement="top" title="Rotate left"> <i class="fa fa-rotate-left"></i> </button>
-      <input class="form-control d-inline form-control-sm" [(ngModel)]="rotation" placeholder="Rotation" type="number" (input)="updateRotation()" style="width: 50px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Rotate +/-"/>
-      <button type="button" class="btn btn-light me-1" (click)="rotateRight()" data-bs-toggle="tooltip" data-bs-placement="top" title="Rotate right"> <i class="fa fa-rotate-right"></i> </button>
+      <button type="button" class="btn btn-light me-1" (click)="rotateLeft()" tooltip="Rotate left"> <i class="fa fa-undo"></i> </button>
+      <span></span>
+      <input class="form-control d-inline form-control-sm" [(ngModel)]="rotation" placeholder="Rotation" type="number" (input)="updateRotation()" style="width: 50px;" />
+      <button type="button" class="btn btn-light me-1" (click)="rotateRight()" tooltip="Rotate right"> <i class="fa fa-redo"></i> </button>
 
-      <button type="button" class="btn btn-light me-1" (click)="flipHorizontal()" data-bs-toggle="tooltip" data-bs-placement="top" title="Flip horizontal"> <i class="fa fa-arrows-h"></i> </button>
-      <button type="button" class="btn btn-light me-1" (click)="flipVertical()" data-bs-toggle="tooltip" data-bs-placement="top" title="Flip vertical"> <i class="fa fa-arrows-v"></i> </button>
+      <button type="button" class="btn btn-light me-1" (click)="flipHorizontal()" tooltip="Flip horizontal"> <i class="fa fa-arrows-alt-h"></i> </button>
+      <button type="button" class="btn btn-light me-1" (click)="flipVertical()" tooltip="Flip vertical"> <i class="fa fa-arrows-alt-v"></i> </button>
 
-      <button type="button" class="btn btn-light me-1" (click)="toggleContainWithinAspectRatio()" data-bs-toggle="tooltip" data-bs-placement="top" title="Expand to Aspect Ratio"> <i class="fa fa-expand"></i> </button>
-      <button type="button" class="btn btn-light me-1" (click)="resetImage()" data-bs-toggle="tooltip" data-bs-placement="top" title="Reset image"> <i class="fa fa-eraser"></i> </button>
+      <button type="button" class="btn btn-light me-1" (click)="toggleContainWithinAspectRatio()" tooltip="Expand to Aspect Ratio"> <i class="fa fa-expand"></i> </button>
+      <button type="button" class="btn btn-light me-1" (click)="resetImage()" data-bs-toggle="tooltip" data-bs-placement="top" tooltip="Reset image"> <i class="fa fa-eraser"></i> </button>
 
       <div>
         <image-cropper class="ps-0"

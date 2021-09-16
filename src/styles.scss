@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import './variables';
-
+@import './tooltip';
+@import './toast';
 
 body {
   font-size: 18px;
@@ -42,7 +43,7 @@ body {
 }
 .btn-label-small {
   position: relative;
-  left: -10px;
+  left: -8px;
   display: inline-block;
   padding: 4px 12px;
   background: rgba(0, 0, 0, 0.05);
@@ -57,31 +58,15 @@ body {
 .btn-labeled {
   background-color: darken($light, 5%);
   color: $secondary;
-  border-color: darken($light, 5%);
+  border-color: white;
   padding-top: 0;
   padding-bottom: 0;
-}
-
-.toast-message {
-  font-size: 14px;
-}
-
-.toast-title {
-  font-size: 16px;
-}
-
-.toast-container .ngx-toastr {
-  width: 400px;
 }
 
 @media (max-width: 576px) {
   .btn-label-small {
     left: 0;
     background: rgba(0, 0, 0, 0);
-  }
-
-  .toast-container .ngx-toastr {
-    width: 300px;
   }
 
   body {

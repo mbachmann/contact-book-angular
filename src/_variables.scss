@@ -22,9 +22,11 @@ $customs-theme-colors: (
 $theme-colors: map-merge($customs-theme-colors, $theme-colors);
 
 @import '~bootstrap/scss/bootstrap';
-@import '~font-awesome/css/font-awesome.css';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 @import '~ngx-toastr/toastr';
 
-$fa-font-path : '../node_modules/font-awesome/fonts';
+$fa-font-path : '~@fortawesome/fontawesome-free/webfonts';
 $icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';

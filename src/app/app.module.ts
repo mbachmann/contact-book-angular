@@ -19,11 +19,22 @@ import { ProgressComponent } from './components/progress/progress.component';
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ModalComponent } from './components/modal/modal.component';
+import { TooltipDirective } from './shared/tooltip.directive';
 
 const avatarColors = ['#FFB6C1', '#2c3e50', '#95a5a6', '#cba973', '#1abc9c'];
 
 @NgModule({
-  declarations: [AppComponent, ContactListPageComponent, ContactDetailPageComponent, ImageCropperComponent, DndDirective, DropZoneComponent, ProgressComponent, ModalComponent],
+  declarations: [
+    AppComponent,
+    ContactListPageComponent,
+    ContactDetailPageComponent,
+    ImageCropperComponent,
+    DndDirective,
+    DropZoneComponent,
+    ProgressComponent,
+    ModalComponent,
+    TooltipDirective
+  ],
   imports: [
     HammerModule,
     BrowserModule,

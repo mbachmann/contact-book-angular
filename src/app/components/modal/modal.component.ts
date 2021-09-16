@@ -9,27 +9,38 @@ import {
 } from '@angular/core';
 
 import { ModalService } from './modal.service';
-import * as bootstrap from "bootstrap";
 import {Modal} from "bootstrap";
 import {ModalChild} from "./modal-child";
-import {activateTooltip} from "../../shared/utils";
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'bootstrap-modal',
   templateUrl: 'modal.component.html',
   styleUrls: ['modal.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  animations: [
+    trigger('dialog', [
+      transition('none => block', [
+        style({ transform: 'scale3d(.3, .3, .3)' }),
+        animate(200)
+      ]),
+      transition('block => inline-block', [
+        animate(100, style({ transform: 'scale3d(.0, .0, .0)' }))
+      ])
+    ])
+  ]
 })
 export class ModalComponent implements OnInit, OnDestroy {
   @Input() id!: string;
   @Input() modalTitle!: string
   @Input() cancelText!: string;
   @Input() okText!: string;
+  @Input() showClose: boolean = true;
 
   @Output() onOk = new EventEmitter<string>();
   private element: HTMLElement;
   private bootstrapModal: Modal | undefined;
-
+  displayStyle = "none";
 
   @ContentChild('modalChild') child: (Component & ModalChild) | undefined ;
 
@@ -38,7 +49,6 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    activateTooltip();
     // ensure id attribute exists
     if (!this.id) {
       console.error('modal must have an id');
@@ -57,12 +67,10 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * open bootstrap 5 modal
+   * open modal with display:block
    */
   open(): void {
-      let jwModal = this.element.getElementsByClassName('bootstrap-modal').item(0)!;
-      this.bootstrapModal = new bootstrap.Modal(jwModal, {});
-      this.bootstrapModal.show();
+      this.displayStyle = "block";
   }
 
   getChildComponent(): (Component & ModalChild) | undefined   {
@@ -70,12 +78,12 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * close modal
+   * open modal with display:none
+   * wait til closing animation has finished
    */
   close(): void {
-    if (this.bootstrapModal !== undefined) {
-      this.bootstrapModal.hide();
-    }
+    this.displayStyle = "inline-block"
+    setTimeout(() => this.displayStyle = "none", 50);
   }
 
   /**
@@ -85,6 +93,14 @@ export class ModalComponent implements OnInit, OnDestroy {
     if (this.child !== undefined) {
       this.onOk.emit(this.child.getData());
     }
+    this.close();
+  }
+
+  onOkCancel() {
+    this.close();
+  }
+
+  onClose() {
     this.close();
   }
 }

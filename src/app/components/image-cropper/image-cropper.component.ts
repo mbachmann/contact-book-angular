@@ -33,13 +33,13 @@ export class ImageCropperComponent implements OnInit, ModalChild {
   }
 
   ngOnInit(): void {
-    activateTooltip();
+   // activateTooltip();
   }
 
   public setData(imageBase64: string): void {
     this.imageCropperHidden = true;
     this.imageBase64 = imageBase64;
-    setTimeout(() => activateTooltip(), 500);
+    setTimeout(() => activateTooltip(), 1500);
   }
 
   public getData() {
