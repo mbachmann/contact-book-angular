@@ -10,7 +10,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ContactListPageComponent } from './pages/contact-list/contact-list-page.component';
 import { ContactDetailPageComponent } from './pages/contact-detail/contact-detail-page.component';
 import { AvatarModule } from 'ngx-avatar';
-import { ImageCropperComponent } from './components/image-cropper/image-cropper.component';
+import { ImageLoadProcessComponent } from './components/image-load-process/image-load-process.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { DndDirective } from './shared/dnd.directive';
@@ -20,6 +20,14 @@ import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ModalComponent } from './components/modal/modal.component';
 import { TooltipDirective } from './shared/tooltip.directive';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { deLocale } from 'ngx-bootstrap/locale';
+import { ContactGroupSelectorComponent } from './components/contact-group-selector/contact-group-selector.component';
+import { ContactRelationSelectorComponent } from './components/contact-relation-selector/contact-relation-selector.component';
+
+defineLocale('de', deLocale);
 
 const avatarColors = ['#FFB6C1', '#2c3e50', '#95a5a6', '#cba973', '#1abc9c'];
 
@@ -28,20 +36,22 @@ const avatarColors = ['#FFB6C1', '#2c3e50', '#95a5a6', '#cba973', '#1abc9c'];
     AppComponent,
     ContactListPageComponent,
     ContactDetailPageComponent,
-    ImageCropperComponent,
+    ImageLoadProcessComponent,
     DndDirective,
     DropZoneComponent,
     ProgressComponent,
     ModalComponent,
-    TooltipDirective
+    TooltipDirective,
+    ContactGroupSelectorComponent,
+    ContactRelationSelectorComponent,
   ],
   imports: [
+    AppRoutingModule,
     HammerModule,
     BrowserModule,
     CommonModule,
     BrowserAnimationsModule,
     ImageCropperModule,
-    AppRoutingModule,
     HttpClientModule,
     ApiModule,
     AvatarModule.forRoot({
@@ -54,6 +64,8 @@ const avatarColors = ['#FFB6C1', '#2c3e50', '#95a5a6', '#cba973', '#1abc9c'];
     }),
     FormsModule,
     ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
   ],
   providers: [{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }],
   bootstrap: [AppComponent],
