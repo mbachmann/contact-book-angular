@@ -1,36 +1,161 @@
-<h4 class="component-title">Phone Book Entry</h4>
+<h4 class="component-title" *ngIf="!isNew">Edit Contact Book Entry</h4>
+<h4 class="component-title" *ngIf="isNew">New Contact Book Entry</h4>
+<p class="contact-book-info">Example angular application with Spring Boot Backend and OpenApi generated REST
+  API</p>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <p class="sub-para contact-book-info">Phone Book Entry id : {{getId()}}</p>
+
+<div class="container px-0">
+  <form class="row gy-1">
+    <div class="col d-none  d-sm-block label-dialog-column ms-2"></div>
+    <div class="col-6 col-sm-5 ">
+
+      <button *ngIf="!isEdit" type="button" class="btn btn-secondary btn-labeled btn-sm" (click)="onNew()">
+        <span class="btn-label-small"><i class="fa fa-plus"></i></span>
+        <span class="d-none d-sm-inline-block">New</span>
+      </button>
+      <button *ngIf="!isEdit" type="button" class="btn btn-secondary btn-labeled btn-sm" (click)="onEdit()">
+        <span class="btn-label-small"><i class="fa fa-edit"></i></span>
+        <span class="d-none d-sm-inline-block">Edit</span>
+      </button>
+      <button *ngIf="isEdit"  type="button" class="btn btn-secondary btn-labeled-secondary btn-sm" (click)="onCancel()">
+        <span class="btn-label-small"><i class="fa fa-edit"></i></span>
+        <span class="d-none d-sm-inline-block">Cancel</span>
+      </button>
+      <button *ngIf="isEdit" type="button" class="btn btn-primary btn-labeled-primary btn-sm" [disabled]="!(form.valid && form.dirty)" (click)="onSave()">
+        <span class="btn-label-small"><i class="fa fa-edit"></i></span>
+        <span class="d-none d-sm-inline-block">Save</span>
+      </button>
+
+
     </div>
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-6 col-sm-5 ms-auto">
+    <button *ngIf="!isEdit" type="button" class="btn btn-secondary btn-labeled btn-sm me-1 float-end" (click)="onRefresh()">
+      <span class="btn-label-small"><i class="fa fa-sync"></i></span>
+      <span class="d-none d-sm-inline-block">Refresh</span>
+    </button>
 
-      <img *ngIf="contact.photo" class="img-thumbnail" [src]="getAvatar(contact.photo, contact.photoContentType)"  alt="avatar"/>
+      <button *ngIf="!isEdit" type="button" class="btn btn-secondary btn-labeled btn-sm float-end">
+        <span class="btn-label-small"><i class="fa fa-trash-alt"></i></span>
+        <span class="d-none d-sm-inline-block">Delete</span>
+      </button>
 
-      <p *ngIf="contact.photo" class="sub-para ">({{avatarWidth}}x{{avatarHeight}} pixels)</p>
-
-      <button type="button" class="btn btn-primary btn-sm mx-1" (click)="openModalImageCropper('image-cropper-modal')" tooltip="tootip on top" >{{getAvatarButtonText()}}</button>
     </div>
-
-  </div>
-
+  </form>
 </div>
 
 
-<bootstrap-modal id="custom-modal-1" modalTitle="A Custom Modal!" cancelText="Cancel"  okText="Ok" >
+<form [formGroup]="form">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 my-2">
+        <div class="container px-0">
+          <div class="row">
+            <label for="id" class="col col-form-label label-dialog-column ">Contact id</label>
+            <div class="col small-text-dialog-column">
+              <input id=id type="number" readonly class="form-control form-control-sm text-end"
+                     formControlName="id">
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="company" class="col col-form-label label-dialog-column">Company</label>
+            <div class="col-6">
+              <input id="company"  class="form-control form-control-sm " formControlName="company">
+              <span [hidden]="!form.hasError('atLeastOne')" class="text-danger">Enter last name or company</span>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <label for="lastName" class="col col-form-label label-dialog-column">Last name</label>
+            <div class="col-6">
+              <input type="text" id="lastName"  class="form-control form-control-sm" formControlName="lastName">
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="firstName" class="col col-form-label label-dialog-column">First name</label>
+            <div class="col-6">
+              <input type="text" id="firstName"  class="form-control form-control-sm" formControlName="firstName">
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="middleName" class="col col-form-label label-dialog-column">Middle name</label>
+            <div class="col-6">
+              <input type="text" id="middleName"  class="form-control form-control-sm " formControlName="middleName">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <label for="birthdate" class="col col-form-label label-dialog-column ">Birthdate</label>
+            <div class="col small-text-dialog-column">
+              <input
+                id="birthdate"
+                class="form-control form-control-sm"
+                bsDatepicker
+                #dp="bsDatepicker"
+                formControlName="birthDate"
+                placeholder="birthdate"
+                [bsConfig]="bsConfig"
+                [isDisabled]="!isEdit"
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="groups" class="col col-form-label label-dialog-column">Groups</label>
+          <div class="col">
+            <app-contact-group-selector id="groups"  formControlName="groups"></app-contact-group-selector>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="relations" class="col col-form-label label-dialog-column">Relations</label>
+          <div class="col">
+            <app-contact-relation-selector id="relations"  formControlName="relations"></app-contact-relation-selector>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <label for="notes" class="col col-form-label label-dialog-column">Notes</label>
+          <div class="col">
+            <textarea id="notes"  class="form-control form-control-sm" formControlName="notes" rows="3"></textarea>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-xs-12 col-sm-4 bg-light text-center my-2 position-relative">
+        <img *ngIf="contact.photo" class="img-thumbnail mt-1" style="max-height: 200px" [src]="getAvatar(contact.photo, contact.photoContentType)"
+             alt="avatar"/>
+        <p *ngIf="contact.photo" class="sub-para ">({{avatarWidth}}x{{avatarHeight}} pixels)</p>
+
+        <button type="button" class="btn btn-primary btn-sm position-absolute translate-middle-x top-80"
+                (click)="openModalImageCropper('image-cropper-modal')" [disabled]="!isEdit"
+                tooltip="add an image to the contact">{{getAvatarButtonText()}}</button>
+        </div>
+
+    </div>
+
+  </div>
+</form>
+
+<bootstrap-modal id="custom-modal-1" modalTitle="A Custom Modal!" cancelText="Cancel" okText="Ok">
   <h3>A Custom Modal!</h3>
-  <p class="sub-para">Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+  <p class="sub-para">Home page text: <input type="text" [(ngModel)]="bodyText"/></p>
   <button class="btn btn-primary btn-sm" (click)="closeModal('custom-modal-1');">Close</button>
 </bootstrap-modal>
 
-<bootstrap-modal id="custom-modal-2" modalTitle="A Tall Custom Modal" cancelText="Cancel"  okText="Ok" >
+<bootstrap-modal id="custom-modal-2" modalTitle="A Tall Custom Modal" cancelText="Cancel" okText="Ok">
   <h3 style="height:800px">A Tall Custom Modal!</h3>
   <button (click)="closeModal('custom-modal-2');">Close</button>
 </bootstrap-modal>
 
-<bootstrap-modal id="image-cropper-modal" modalTitle="Contact Photo" cancelText="Cancel" okText="Ok"  (onOk)="saveImage($event)">
-  <app-image-cropper  #modalChild ></app-image-cropper>
+<bootstrap-modal id="image-cropper-modal" modalTitle="Contact Photo" cancelText="Cancel" okText="Ok"
+                 (onOk)="saveImage($event)" >
+  <app-load-process-image #modalChild></app-load-process-image>
 </bootstrap-modal>
 
