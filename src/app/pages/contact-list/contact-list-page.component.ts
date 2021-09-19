@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContactsService, ContactViewList } from '../../openapi/openapi-gen';
 import { HttpResponse } from '@angular/common/http';
@@ -9,7 +9,7 @@ import { activateTooltip } from '../../shared/utils';
   templateUrl: './contact-list-page.component.html',
   styleUrls: ['./contact-list-page.component.scss'],
 })
-export class ContactListPageComponent implements OnInit {
+export class ContactListPageComponent implements OnInit, OnDestroy {
   private subscription: Subscription | undefined;
   contactBookList: Array<ContactViewList> = [];
   totalItems: string = '0';
@@ -24,7 +24,6 @@ export class ContactListPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    activateTooltip();
 
     this.subscription = this.contactService.findAllContactViewList('', '*', '*', 0, 20, [], 'response').subscribe(
       (res: HttpResponse<Array<ContactViewList>>) => {
@@ -32,9 +31,9 @@ export class ContactListPageComponent implements OnInit {
           this.contactBookList = res.body;
           const keys = res.headers.keys();
           const headers = keys.map(key => `${key}: ${res.headers.get(key)}`);
-          console.log(headers);
+          // console.log(headers);
           this.totalItems = res.headers.get('x-total-count')!;
-          console.log(JSON.stringify(res.headers));
+          // console.log(JSON.stringify(res.headers));
         }
       },
       err => console.log(err)

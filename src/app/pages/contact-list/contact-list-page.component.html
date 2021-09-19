@@ -16,8 +16,8 @@
       </button>
     </div>
 
-    <div class="col-xs-12  col-sm-4">
-            <span class="input-group">
+    <div class="col-xs-12  col-sm-4 ">
+         <span class="input-group">
             <input class="form-control form-control-sm" placeholder="search" type="text" id="example-search-input">
             <span class="input-group-append">
                 <button class="btn  btn-sm  bg-white   ms-1" type="button">
@@ -89,17 +89,17 @@
 
           </div>
           <div class="col-4 col-md-3 col-lg-2 px-0 d-flex align-items-center flex-fill">
-            <p class="mb-0 text-secondary " style="font-size: 12px;"><i class="fa fa-fw fa-sort"></i>Name</p>
+            <p class="mb-0 text-secondary "><i class="fa fa-fw fa-sort"></i>Name</p>
           </div>
-          <div class="col-3 col-md-3  col-lg-2   px-0 d-flex align-items-center flex-fill">
-            <p class="mb-0 text-secondary " style="font-size: 12px;"><i class="fa fa-fw fa-sort-asc"></i>phone</p>
+          <div class="col-3 col-md-3 col-lg-2 d-flex align-items-center flex-fill">
+            <p class="mb-0 text-secondary " ><i class="fa fa-fw fa-sort-up"></i>phone</p>
           </div>
-          <div class="col-3 col-md-2 d-none d-lg-block px-0 d-flex align-items-center flex-fill">
-            <p class="mb-0 text-secondary " style="font-size: 12px;"><i class="fa fa-fw fa-sort-asc"></i>mail</p>
+          <div class="col-3 col-md-2 d-none d-lg-flex px-0 d-flex align-items-center flex-fill">
+          <p class="mb-0 text-secondary " ><i class="fa fa-fw fa-sort-up"></i>mail</p>
           </div>
 
           <div class="col-3 col-md-2 d-none  d-md-block px-0 d-flex align-items-center flex-fill">
-            <p class="mb-0 text-secondary " style="font-size: 12px;"><i class="fa fa-fw fa-sort-asc"></i>address</p>
+            <p class="mb-0 text-secondary " ><i class="fa fa-fw fa-sort-down"></i>address</p>
           </div>
 
         </div>
@@ -110,7 +110,7 @@
         <div class="row  clickable  my-1 "
              *ngFor="let item of contactBookList;">
 
-          <div style="padding-left: 3px; padding-right: 0px;" class="fixed-checkbox-column py-1 d-flex align-items-center">
+          <div style="padding-left: 3px; padding-right: 0;" class="fixed-checkbox-column py-1 d-flex align-items-center">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
           </div>
 
@@ -123,18 +123,18 @@
 
           </div>
           <div  class="col-4 col-md-3 col-lg-2 px-0 d-flex align-items-center flex-fill" [routerLink]="['/contact-book-item/',item.id ]">
-            <p class="mb-0 text-truncate" style="font-size: 12px;"
+            <p class="mb-0 text-truncate"
                [innerHTML]="getName(item.firstName, item.lastName, item.company)"></p>
           </div>
           <div  class="col-3 col-md-3 col-lg-2 d-flex align-items-center flex-fill" [routerLink]="['/contact-book-item/',item.id ]">
-            <p class="mb-0 text-truncate" style="font-size: 12px;">+41 (0) 79 123 45 67 </p>
+            <p class="mb-0 text-truncate" >+41 (0) 79 123 45 67 </p>
           </div>
           <div class="col-3 col-md-2 d-none d-lg-flex px-0 d-flex align-items-center flex-fill" [routerLink]="['/contact-book-item/',item.id ]">
-            <p class="mb-0 text-truncate" style="font-size: 12px;">Mail Mail Mail Mail Mail</p>
+            <p class="mb-0 text-truncate" >Mail Mail Mail Mail Mail</p>
           </div>
 
           <div class="col-3 col-md-2 d-none  d-md-flex px-0 d-flex align-items-center flex-fill" [routerLink]="['/contact-book-item/',item.id ]">
-            <p class="mb-0 text-truncate" style="font-size: 12px;">Address Address Address Address Address</p>
+            <p class="mb-0 text-truncate" >Address Address Address Address Address</p>
           </div>
         </div>
       </section>
