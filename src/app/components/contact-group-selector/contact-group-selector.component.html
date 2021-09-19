@@ -1,0 +1,11 @@
+<ng-multiselect-dropdown
+  [placeholder]="'select contact groups'"
+  [settings]="dropdownSettings"
+  [data]="contactGroups"
+  [(ngModel)]="selectedContactGroups"
+  (onSelect)="onSelect($event)"
+  (onDeSelect)="onDeSelect($event)"
+  (onSelectAll)="onSelectAll($event)"
+  (onDeSelectAll)="onDeSelectAll($event)"
+>
+</ng-multiselect-dropdown>
