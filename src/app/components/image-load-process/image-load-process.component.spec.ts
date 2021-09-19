@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ImageCropperComponent} from './image-cropper.component';
+import {ImageLoadProcessComponent} from './image-load-process.component';
 import {ImageCropperModule} from "ngx-image-cropper";
 import {BrowserModule, HammerModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
@@ -9,8 +9,8 @@ import {DropZoneComponent} from "../drop-zone/drop-zone.component";
 
 
 describe('ImageCropperComponent', () => {
-  let component: ImageCropperComponent;
-  let fixture: ComponentFixture<ImageCropperComponent>;
+  let component: ImageLoadProcessComponent;
+  let fixture: ComponentFixture<ImageLoadProcessComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,13 +25,13 @@ describe('ImageCropperComponent', () => {
           preventDuplicates: true,
         }),
       ],
-      declarations: [ImageCropperComponent, DropZoneComponent],
+      declarations: [ImageLoadProcessComponent, DropZoneComponent],
     }).compileComponents();
 
   });
 
   beforeEach(async () => {
-    fixture = TestBed.createComponent(ImageCropperComponent);
+    fixture = TestBed.createComponent(ImageLoadProcessComponent);
     component = fixture.debugElement.componentInstance;
     fixture.detectChanges();
   });

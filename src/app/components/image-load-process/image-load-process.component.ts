@@ -9,11 +9,11 @@ import {ToastrService} from "ngx-toastr";
 import {ModalChild} from "../modal/modal-child";
 
 @Component({
-  selector: 'app-image-cropper',
-  templateUrl: './image-cropper.component.html',
-  styleUrls: ['./image-cropper.component.scss'],
+  selector: 'app-load-process-image',
+  templateUrl: './image-load-process.component.html',
+  styleUrls: ['./image-load-process.component.scss'],
 })
-export class ImageCropperComponent implements OnInit, ModalChild {
+export class ImageLoadProcessComponent implements OnInit, ModalChild {
 
   imageFile: any = undefined;
   imageChangedEvent: any = '';

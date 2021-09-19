@@ -1,5 +1,5 @@
 
- <app-drop-zone (dropped)="fileSelected($event)" *ngIf="!imageCropperHidden"></app-drop-zone>
+ <app-drop-zone (dropped)="fileSelected($event)" *ngIf="!imageCropperHidden" description="Drag and drop image file here" buttonText="Browse for image"></app-drop-zone>
 
 <div class="container px-0"  *ngIf="imageCropperHidden">
   <div class="row">
