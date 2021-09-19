@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-drop-zone',
@@ -7,6 +7,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class DropZoneComponent implements OnInit {
 
+  @Input() description = 'Drag and drop file here';
+  @Input() buttonText = 'Browse for file';
   @Output() dropped = new EventEmitter<FileList>();
 
   constructor() { }
