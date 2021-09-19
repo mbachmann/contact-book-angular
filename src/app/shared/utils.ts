@@ -31,3 +31,12 @@ export function checkImageSize(imageBase64: string, minPixels: number, maxPixels
     originalImage.src = imageBase64;
   });
 }
+
+/**
+ * Extract the MIME type from a base64 string
+ * @param base64Data Base64 string
+ * @return MIME type string
+ */
+export function extractMimeType(base64Data: string): string {
+   return base64Data.substring("data:".length, base64Data.indexOf(";base64"))
+}
