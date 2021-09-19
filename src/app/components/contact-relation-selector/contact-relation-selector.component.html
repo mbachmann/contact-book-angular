@@ -1,0 +1,12 @@
+<ng-multiselect-dropdown
+  [placeholder]="'select contact relations'"
+  [settings]="dropdownSettings"
+  [data]="contactRelations"
+  [(ngModel)]="selectedContactRelations"
+  (onSelect)="onSelect($event)"
+  (onDeSelect)="onDeSelect($event)"
+  (onSelectAll)="onSelectAll($event)"
+  (onDeSelectAll)="onDeSelectAll($event)"
+>
+</ng-multiselect-dropdown>
+
