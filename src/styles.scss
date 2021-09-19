@@ -3,9 +3,10 @@
 @import './variables';
 @import './tooltip';
 @import './toast';
+@import './ng-multiselect-dropdown';
+
 
 body {
-  font-size: 18px;
   line-height: 1.58;
   background: $primary-lighter;
   background: -webkit-linear-gradient(to left, $primary, $primary-lighter);
@@ -38,9 +39,7 @@ body {
 .contact-book-list-info {
   margin-bottom: 30px;
 }
-.nav-link {
-  font-size: 0.8em;
-}
+
 .btn-label-small {
   position: relative;
   left: -8px;
@@ -63,6 +62,38 @@ body {
   padding-bottom: 0;
 }
 
+.btn-labeled-primary {
+  background-color: lighten($primary, 10%);
+  border-color: white;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.btn-labeled-secondary {
+  background-color: lighten($secondary, 10%);
+  border-color: white;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.label-dialog-column {
+  font-size: 0.7rem;
+  -ms-flex: 0 0 80px;
+  flex: 0 0 80px;
+  padding-left: 0;
+  padding-right: 2px;
+}
+
+.small-text-dialog-column {
+  -ms-flex: 0 0 120px;
+  flex: 0 0 120px;
+}
+
+.top-80 {
+  top: 80% !important;
+}
+
+
 @media (max-width: 576px) {
   .btn-label-small {
     left: 0;
@@ -73,3 +104,6 @@ body {
     padding-bottom: 0;
   }
 }
+
+
+
