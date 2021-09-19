@@ -4,12 +4,15 @@ $font-size-base: 0.8rem;
 
 $color-contrast-light: white;
 
+
+
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 
 $link-hover-color: $secondary;
 $tooltip-bg: $secondary;
 $tooltip-arrow-color: $tooltip-bg;
+$nav-link-font-size: $lead-font-size;
 
 $primary-lighter: #ca6363;
 
@@ -21,12 +24,14 @@ $customs-theme-colors: (
 
 $theme-colors: map-merge($customs-theme-colors, $theme-colors);
 
+
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 @import '~ngx-toastr/toastr';
+@import "~ngx-bootstrap/datepicker/bs-datepicker";
 
 $fa-font-path : '~@fortawesome/fontawesome-free/webfonts';
 $icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
