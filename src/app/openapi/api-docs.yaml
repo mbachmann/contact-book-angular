@@ -23,8 +23,6 @@ paths:
           type: integer
           format: int64
       responses:
-        "400":
-          description: Invalid id supplied
         "404":
           description: contact not found
         "200":
@@ -33,6 +31,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Contact'
+        "400":
+          description: Invalid id supplied
     put:
       tags:
       - Contacts
@@ -653,11 +653,15 @@ components:
           type: integer
           format: int64
         photo:
-          type: string
-          description: The photo of the contact
+          type: array
+          items:
+            type: string
+            format: byte
         thumbNail:
-          type: string
-          description: The thumbnail of the contact
+          type: array
+          items:
+            type: string
+            format: byte
         photoContentType:
           type: string
         firstName:
@@ -672,6 +676,8 @@ components:
           type: string
           format: date
         notes:
+          type: string
+        contactUrl:
           type: string
         phones:
           uniqueItems: true
@@ -708,11 +714,6 @@ components:
           format: int64
         name:
           type: string
-        contacts:
-          uniqueItems: true
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
         usage:
           type: integer
           format: int64
@@ -735,11 +736,8 @@ components:
           - FRIENDS
         contactRelationValue:
           type: string
-        contacts:
-          uniqueItems: true
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
+        name:
+          type: string
         usage:
           type: integer
           format: int64
@@ -822,16 +820,6 @@ components:
           type: integer
           description: The id of the contact
           format: int64
-        thumbNail:
-          type: string
-          description: The thumbnail of the contact
-          format: binary
-        groupsIdAggregate:
-          type: string
-          description: Aggregated group id's
-        relationsIdAggregate:
-          type: string
-          description: Aggregated relations id's
         birthDate:
           type: string
           description: The birth date of the contact
@@ -845,6 +833,16 @@ components:
         emailsAggregate:
           type: string
           description: Aggregated email addresses
+        thumbNail:
+          type: string
+          description: The thumbnail of the contact
+          format: binary
+        groupsIdAggregate:
+          type: string
+          description: Aggregated group id's
+        relationsIdAggregate:
+          type: string
+          description: Aggregated relations id's
         lastName:
           type: string
           description: The last or surname name of the contact

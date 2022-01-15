@@ -9,13 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Contact } from './contact';
 
 
 export interface ContactGroup { 
     id?: number;
     name: string;
-    contacts?: Set<Contact>;
     usage?: number;
 }
 

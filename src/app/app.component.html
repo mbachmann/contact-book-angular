@@ -17,13 +17,13 @@
             Configuration
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarConfigurationDropdown">
-            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book" target="_blank"><i class="fa fa-fw fa-cog"></i> &nbsp; Codes</a>
-            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book-angular" target="_blank"><i class="fa fa-fw fa-users-cog"></i>&nbsp; Contact Groups</a>
-            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book-angular" target="_blank"><i class="fa fa-fw fa-people-arrows"></i>&nbsp; Contact Relations</a>
-            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book-angular" target="_blank"><i class="fa fa-fw fa-toolbox"></i>&nbsp; Create Random Contacts</a>
+            <a class="dropdown-item" [routerLink]="['/configuration/codes']"><i class="fa fa-fw fa-cog"></i> &nbsp; Codes</a>
+            <a class="dropdown-item" [routerLink]="['/configuration/contact-groups']"><i class="fa fa-fw fa-users-cog"></i>&nbsp; Contact Groups</a>
+            <a class="dropdown-item" [routerLink]="['/configuration/contact-relations']"><i class="fa fa-fw fa-people-arrows"></i>&nbsp; Contact Relations</a>
+            <a class="dropdown-item" [routerLink]="['/configuration/create-random-contacts']"><i class="fa fa-fw fa-toolbox"></i>&nbsp; Create Random Contacts</a>
             <hr class="dropdown-divider">
-            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book-angular" target="_blank"><i class="fa fa-fw fa-file-import"></i>&nbsp; Import Contacts</a>
-            <a class="dropdown-item" href="https://github.com/mbachmann/contact-book-angular" target="_blank"><i class="fa fa-fw fa-file-export"></i>&nbsp; Export Contacts</a>
+            <a class="dropdown-item" [routerLink]="['/configuration/export-contacts']"><i class="fa fa-fw fa-file-import"></i>&nbsp; Import Contacts</a>
+            <a class="dropdown-item" [routerLink]="['/configuration/import-contacts']"><i class="fa fa-fw fa-file-export"></i>&nbsp; Export Contacts</a>
           </div>
         </li>
         <li class="nav-item dropdown">

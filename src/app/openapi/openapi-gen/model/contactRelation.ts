@@ -9,14 +9,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Contact } from './contact';
 
 
 export interface ContactRelation { 
     id?: number;
     contactRelationType?: ContactRelation.ContactRelationTypeEnum;
     contactRelationValue?: string;
-    contacts?: Set<Contact>;
+    name?: string;
     usage?: number;
 }
 export namespace ContactRelation {

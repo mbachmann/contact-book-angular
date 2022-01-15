@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Contact, ContactsService} from '../../openapi/openapi-gen';
 import {ActivatedRoute, Router} from '@angular/router';
-import {extractMimeType, parseIsoDateStrToDate} from '../../shared/utils';
+import {byteSize, extractMimeType, kByteSize, parseIsoDateStrToDate} from '../../shared/utils';
 import {ModalService} from "../../components/modal/modal.service";
 import {ModalChild} from "../../components/modal/modal-child";
-import {FormBuilder, Validators} from "@angular/forms";
+import {AbstractControlOptions, FormBuilder, Validators} from "@angular/forms";
 import {BsDatepickerConfig, BsLocaleService} from "ngx-bootstrap/datepicker";
 import {atLeastOne} from "../../shared/at-least-one.validator";
 
@@ -27,21 +27,23 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
   isEdit: boolean = false;
   isNew: boolean = false;
 
+  @ViewChild('avatar') avatar!: ElementRef;
+
   form = this.formBuilder.group({
-    id: [{value: 0, disabled: true}],
-    firstName: [{value: '', disabled: true}],
-    middleName: [{value: '', disabled: true}],
-    lastName: [{value: '', disabled: true}],
-    company: [{value: '', disabled: true}],
-    birthDate: [{value: '', disabled: true}],
-    notes:  [{value: '', disabled: true}],
-    phones:  [{value: '', disabled: true}],
-    addresses:  [{value: '', disabled: true}],
-    emails:  [{value: '', disabled: true}],
-    relations:  [{value: '', disabled: true}],
-    groups:  [{value: '', disabled: true}],
-  },
-    { validator: atLeastOne(Validators.required, ['lastName','company']) });
+      id: [{value: 0, disabled: true}],
+      firstName: [{value: '', disabled: true}],
+      middleName: [{value: '', disabled: true}],
+      lastName: [{value: '', disabled: true}],
+      company: [{value: '', disabled: true}],
+      birthDate: [{value: '', disabled: true}],
+      notes: [{value: '', disabled: true}],
+      phones: [{value: '', disabled: true}],
+      addresses: [{value: '', disabled: true}],
+      emails: [{value: '', disabled: true}],
+      relations: [{value: '', disabled: true}],
+      groups: [{value: '', disabled: true}],
+    },
+    {validator: atLeastOne(Validators.required, ['lastName', 'company'])} as AbstractControlOptions);
 
 
   constructor(private readonly contactService: ContactsService,
@@ -82,6 +84,7 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
       this.isNew = true;
       this.editForm(true);
     }
+    this.getAvatarDimension(this.contact);
   }
 
   editForm(isEdit: boolean) {
@@ -124,6 +127,8 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
       emails: contact.emails,
       relations: contact.relations,
       groups: contact.groups,
+      avatar: this.getAvatar(contact.photo, contact.photoContentType),
+      photoContentType: contact.photoContentType,
     });
   }
 
@@ -134,32 +139,6 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
   getAvatar(base64Photo: any, photoContentType: any) {
     if (base64Photo === undefined || base64Photo === null) return '';
     return 'data:' + photoContentType + ';base64,' + base64Photo;
-  }
-
-
-  getImageDimensions(base64Photo: any, photoContentType: string): Promise<Object> {
-    let self = this;
-    let avatar = this.getAvatar(base64Photo, photoContentType);
-
-    return new Promise<Object>(function (resolved, rejected) {
-      let image = new Image()
-
-      image.onload = (() => {
-        self.avatarWidth = image.naturalWidth;
-        self.avatarHeight = image.naturalHeight;
-
-        resolved({width: image.width, height: image.height});
-      });
-      if (avatar) {
-        image.src = avatar;
-      }
-    });
-  }
-
-  getDim() {
-    if (this.contact.photoContentType) {
-      this.getImageDimensions(this.contact.photo, this.contact.photoContentType).then();
-    }
   }
 
   openModal(id: string) {
@@ -184,8 +163,8 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
     console.log(baseImage64);
     this.contact.photoContentType = extractMimeType(baseImage64);
     let base64Index = baseImage64.indexOf(';base64,') + ';base64,'.length;
-    this.contact.photo = baseImage64.substring(base64Index);
-
+    this.contact.photo = []
+    this.contact.photo[0] = baseImage64.substring(base64Index);
   }
 
   onSubmit(): void {
@@ -213,11 +192,25 @@ export class ContactDetailPageComponent implements OnInit, OnDestroy {
   }
 
   onNew() {
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
       this.router.navigate(['/contact-book-item/0']));
   }
 
   private saveContact() {
+
+  }
+
+  private getAvatarDimension(contact: Contact) {
+    let self = this;
+
+    setTimeout(() => {
+      if (self.avatar !== undefined && self.contact.photoContentType) {
+        let img = self.avatar.nativeElement;
+        self.avatarWidth = img.naturalWidth;
+        self.avatarHeight = img.naturalHeight;
+        console.log("size:", kByteSize(img.src));
+      }
+    }, 500);
 
   }
 }

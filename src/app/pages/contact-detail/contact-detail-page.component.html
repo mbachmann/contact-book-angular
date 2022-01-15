@@ -129,10 +129,10 @@
 
       </div>
       <div class="col-xs-12 col-sm-4 bg-light text-center my-2 position-relative">
-        <img *ngIf="contact.photo" class="img-thumbnail mt-1" style="max-height: 200px" [src]="getAvatar(contact.photo, contact.photoContentType)"
+        <img #avatar *ngIf="contact.photo" class="img-thumbnail mt-1" style="max-height: 200px" [src]="getAvatar(contact.photo, contact.photoContentType)"
              alt="avatar"/>
-        <p *ngIf="contact.photo" class="sub-para ">({{avatarWidth}}x{{avatarHeight}} pixels)</p>
-
+        <p *ngIf="contact.photo" class="sub-para ">({{avatarWidth}}x{{avatarHeight}} pixels)
+        <a download target="_blank" [href]="getAvatar(contact.photo, contact.photoContentType)">Download</a> </p>
         <button type="button" class="btn btn-primary btn-sm position-absolute translate-middle-x top-80"
                 (click)="openModalImageCropper('image-cropper-modal')" [disabled]="!isEdit"
                 tooltip="add an image to the contact">{{getAvatarButtonText()}}</button>

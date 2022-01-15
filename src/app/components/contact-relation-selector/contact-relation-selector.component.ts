@@ -24,7 +24,7 @@ export class ContactRelationSelectorComponent implements ControlValueAccessor, O
   onTouched = () => {};
   touched = false;
   dropdownSettings: IDropdownSettings = {};
-  isDisable: boolean = false;
+  isDisabled: boolean = false;
 
   constructor(private readonly configurationService: ConfigurationsService) {}
 
@@ -44,7 +44,7 @@ export class ContactRelationSelectorComponent implements ControlValueAccessor, O
       (res: HttpResponse<Array<ContactRelation>>) => {
         if (res.body != null) {
           this.contactRelations = res.body;
-          this.contactRelations.forEach(relation => delete relation['contacts']);
+          // this.contactRelations.forEach(relation => delete relation['contacts']);
           // @ts-ignore
           this.contactRelations.forEach(relation => relation['name'] = this.getName(relation.contactRelationType));
         }
@@ -104,7 +104,7 @@ export class ContactRelationSelectorComponent implements ControlValueAccessor, O
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.isDisable = isDisabled;
+    this.isDisabled = isDisabled;
   }
 
   writeValue(relations: Array<ContactRelation>): void {

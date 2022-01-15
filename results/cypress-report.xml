@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="2.4910" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2021-09-16T15:38:30" tests="0" file="cypress/integration/app.spec.ts" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Home Page" timestamp="2021-09-16T15:38:30" tests="1" time="2.4910" failures="0">
+    <testcase name="Home Page should display the Title Contact Book | Visualize your contacts on the home page" time="2.4910" classname="should display the Title Contact Book | Visualize your contacts on the home page">
+    </testcase>
+  </testsuite>
+</testsuites>

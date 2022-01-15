@@ -23,6 +23,7 @@ export class ContactGroupSelectorComponent implements ControlValueAccessor, OnIn
   selectedContactGroups: Array<ContactGroup> = [];
   propagateChange = (_: Array<ContactGroup>) => {};
   dropdownSettings: IDropdownSettings = {};
+  isDisabled: boolean = false;
 
   constructor(private readonly configurationService: ConfigurationsService) {}
 
@@ -42,7 +43,7 @@ export class ContactGroupSelectorComponent implements ControlValueAccessor, OnIn
       (res: HttpResponse<Array<ContactGroup>>) => {
         if (res.body != null) {
           this.contactGroups = res.body;
-          this.contactGroups.forEach(group => delete group['contacts']);
+          // this.contactGroups.forEach(group => delete group['contacts']);
         }
       },
       err => console.log(err)
@@ -98,6 +99,7 @@ export class ContactGroupSelectorComponent implements ControlValueAccessor, OnIn
   }
 
   setDisabledState(isDisabled: boolean): void {
+    this.isDisabled = isDisabled;
   }
 
   writeValue(groups: Array<ContactGroup>): void {

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalComponent } from './modal.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {ImageLoadProcessComponent} from "../image-cropper/image-load-process.component";
+import {ImageLoadProcessComponent} from "../image-load-process/image-load-process.component";
 
 describe('ModalComponent', () => {
   let component: ModalComponent;

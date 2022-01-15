@@ -2,6 +2,7 @@
   [placeholder]="'select contact groups'"
   [settings]="dropdownSettings"
   [data]="contactGroups"
+  [disabled]="isDisabled"
   [(ngModel)]="selectedContactGroups"
   (onSelect)="onSelect($event)"
   (onDeSelect)="onDeSelect($event)"
