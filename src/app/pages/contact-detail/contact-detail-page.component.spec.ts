@@ -3,16 +3,25 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactDetailPageComponent } from './contact-detail-page.component';
 import {HttpClientModule} from "@angular/common/http";
 import {RouterTestingModule} from "@angular/router/testing";
-import {ImageLoadProcessComponent} from "../../components/image-cropper/image-load-process.component";
 import {BrowserModule, HammerModule} from "@angular/platform-browser";
 import {ImageCropperModule} from "ngx-image-cropper";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToastrModule} from "ngx-toastr";
 import {ActivatedRoute} from "@angular/router";
 import {of} from "rxjs";
 import {DropZoneComponent} from "../../components/drop-zone/drop-zone.component";
 import {ModalComponent} from "../../components/modal/modal.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ImageLoadProcessModule} from "../../components/image-load-process/image-load-process.module";
+import {ContactGroupSelectorModule} from "../../components/contact-group-selector/contact-group-selector.module";
+import {ContactGroupSelectorComponent} from "../../components/contact-group-selector/contact-group-selector.component";
+import {
+  ContactRelationSelectorModule
+} from "../../components/contact-relation-selector/contact-relation-selector.module";
+import {DropZoneModule} from "../../components/drop-zone/drop-zone.module";
+import {ModalModule} from "../../components/modal/modal.module";
+import {TooltipModule} from "../../shared/tooltip/tooltip.module";
+import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
 
 describe('ContactDetailPageComponent', () => {
   let component: ContactDetailPageComponent;
@@ -23,18 +32,26 @@ describe('ContactDetailPageComponent', () => {
       imports: [
         RouterTestingModule,
         BrowserAnimationsModule,
+        BsDatepickerModule.forRoot(),
         HttpClientModule,
         HammerModule,
         BrowserModule,
+        DropZoneModule,
+        ModalModule,
         ImageCropperModule,
+        ImageLoadProcessModule,
+        ContactGroupSelectorModule,
+        ContactRelationSelectorModule,
         FormsModule,
+        ReactiveFormsModule,
         ToastrModule.forRoot({
           timeOut: 3000,
           positionClass: 'toast-top-right',
           preventDuplicates: true,
         }),
+        TooltipModule
       ],
-      declarations: [ContactDetailPageComponent, ImageLoadProcessComponent, DropZoneComponent, ModalComponent],
+      declarations: [ContactDetailPageComponent],
       providers: [
         {
           provide: ActivatedRoute,

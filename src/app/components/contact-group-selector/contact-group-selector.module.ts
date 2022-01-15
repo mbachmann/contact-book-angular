@@ -15,12 +15,8 @@ import {ContactGroupSelectorComponent} from "./contact-group-selector.component"
   ],
   imports: [
     CommonModule,
-    HammerModule,
     FormsModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
     NgMultiSelectDropDownModule.forRoot(),
-    BsDatepickerModule.forRoot(),
   ],
   exports: [
     ContactGroupSelectorComponent
