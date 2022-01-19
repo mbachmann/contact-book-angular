@@ -1,0 +1,48 @@
+<h4 class="component-title">Contact Relations</h4>
+<p class="sub-para contact-book-list-info">Contact Relation Entries: {{totalItems}}</p>
+<div class="container px-0">
+    <app-list-bar></app-list-bar>
+
+
+    <div class="col-sm  mt-4 mt-sm-2 ">
+        <section class="container ">
+            <div class="row mt-3 ">
+                <div style="padding-left: 3px; padding-right: 0;"
+                     class="fixed-checkbox-column  pb-1 d-flex align-items-center">
+                    <input class="form-check-input mt-0" type="checkbox" value="">
+                </div>
+                <div class="fixed-avatar-column ">
+
+                </div>
+                <div class="col-4 col-md-3 col-lg-2 px-0 d-flex align-items-center flex-fill">
+                    <p role="button" class="mb-0 text-secondary" (click)="onChangeNameSort('name')">
+                        <i class="fa fa-fw"
+                           [ngClass]="{'fa-sort': getSortDirection('name') === 'none',
+                                      'fa-sort-up': getSortDirection('name') === 'up',
+                                      'fa-sort-down': getSortDirection('name') === 'down'}">
+                        </i>Name</p>
+                </div>
+            </div>
+        </section>
+        <section class="container legend">
+            <div class="row  clickable  my-2 "
+                 *ngFor="let item of contactRelationsList;">
+
+                <div style="padding-left: 3px; padding-right: 0;"
+                     class="fixed-checkbox-column py-1 d-flex align-items-center">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                </div>
+
+                <div [routerLink]="['/configuration/contact-relations-item/',item.id ]" style="padding-left: 3px;"
+                     class="fixed-avatar-column py-1 d-flex align-items-center">
+
+                </div>
+                <div class="col-4 col-md-3 col-lg-2 px-0 d-flex align-items-center flex-fill"
+                     [routerLink]="['/configuration/contact-relations-item/',item.id ]">
+                    <p class="mb-0">{{item.name}}</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

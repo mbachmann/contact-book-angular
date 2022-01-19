@@ -16,14 +16,14 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
-import {ProgressModule} from "./components/progress/progress.module";
-import {ListBarModule} from "./components/list-bar/list-bar.module";
-import {ModalModule} from "./components/modal/modal.module";
-import {ImageLoadProcessModule} from "./components/image-load-process/image-load-process.module";
-import {DropZoneModule} from "./components/drop-zone/drop-zone.module";
-import {TooltipModule} from "./shared/tooltip/tooltip.module";
-import {ContactRelationSelectorModule} from "./components/contact-relation-selector/contact-relation-selector.module";
-import {ContactGroupSelectorModule} from "./components/contact-group-selector/contact-group-selector.module";
+import { ProgressModule } from "./components/progress/progress.module";
+import { ListBarModule } from "./components/list-bar/list-bar.module";
+import { ModalModule } from "./components/modal/modal.module";
+import { ImageLoadProcessModule } from "./components/image-load-process/image-load-process.module";
+import { DropZoneModule } from "./components/drop-zone/drop-zone.module";
+import { TooltipModule } from "./shared/tooltip/tooltip.module";
+import { ContactRelationSelectorModule } from "./components/contact-relation-selector/contact-relation-selector.module";
+import { ContactGroupSelectorModule } from "./components/contact-group-selector/contact-group-selector.module";
 
 defineLocale('de', deLocale);
 

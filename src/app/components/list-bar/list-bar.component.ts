@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataListService} from "../../shared/services/data/data-list.service";
 
 @Component({
   selector: 'app-list-bar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: DataListService) { }
 
   ngOnInit(): void {
   }
 
+  refresh() {
+    this.dataService.findAllData();
+  }
 }

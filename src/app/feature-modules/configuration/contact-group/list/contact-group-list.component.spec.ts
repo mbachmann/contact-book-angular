@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContactGroupsComponent } from './contact-groups.component';
+import { ContactGroupListComponent } from './contact-group-list.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import {ListBarModule} from "../../../components/list-bar/list-bar.module";
 
 describe('ContactGroupsComponent', () => {
-  let component: ContactGroupsComponent;
-  let fixture: ComponentFixture<ContactGroupsComponent>;
+  let component: ContactGroupListComponent;
+  let fixture: ComponentFixture<ContactGroupListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactGroupsComponent ],
+      declarations: [ ContactGroupListComponent ],
       imports: [
         RouterTestingModule,
         HttpClientModule,
@@ -24,7 +24,7 @@ describe('ContactGroupsComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContactGroupsComponent);
+    fixture = TestBed.createComponent(ContactGroupListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
